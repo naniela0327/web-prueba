@@ -337,3 +337,30 @@ nav button:hover{transform:translateY(-1px)}
 @media(prefers-reduced-motion:reduce){
   .cloud-doodle,.sun-doodle,.pencil-doodle,.star-doodle,.lab,.hero h1,.hero p,.hero .actions,.hero .tags,.hero-image,.slide-shape{animation:none!important}
 }
+
+/* ===== Animaciones visibles al hacer scroll ===== */
+.scroll-reveal{opacity:0;transform:translate3d(0,55px,0) scale(.96) rotateX(3deg);filter:blur(4px);transition:opacity .75s cubic-bezier(.2,.8,.2,1),transform .85s cubic-bezier(.16,1,.3,1),filter .75s ease;transition-delay:var(--reveal-delay,0ms)}
+.scroll-reveal.is-visible{opacity:1;transform:translate3d(0,0,0) scale(1) rotateX(0);filter:blur(0)}
+.hero>div:first-child.scroll-reveal{transform:translate3d(-65px,35px,0) scale(.95) rotate(-1deg)}
+.hero>div:last-child.scroll-reveal{transform:translate3d(65px,35px,0) scale(.92) rotate(2deg)}
+.hero>div:first-child.scroll-reveal.is-visible,.hero>div:last-child.scroll-reveal.is-visible{transform:translate3d(0,0,0) scale(1) rotate(0)}
+.lab-grid .lab.scroll-reveal:nth-child(2){transition-delay:160ms}
+.experience-grid .experience.scroll-reveal:nth-child(2n){transition-delay:110ms}
+.grid-3 .card.scroll-reveal:nth-child(3n+2){transition-delay:100ms}
+.grid-3 .card.scroll-reveal:nth-child(3n){transition-delay:180ms}
+.gallery .slide-card.scroll-reveal:nth-child(4n+2){transition-delay:90ms}
+.gallery .slide-card.scroll-reveal:nth-child(4n+3){transition-delay:150ms}
+.gallery .slide-card.scroll-reveal:nth-child(4n){transition-delay:210ms}
+.lab,.experience,.card,.contact-card,.note,.info,.quote,.cover-art,.gallery figure{will-change:transform}
+.lab:hover{transform:translateY(-14px) rotate(-1deg) scale(1.015);box-shadow:0 30px 65px rgba(61,32,93,.20)}
+.experience:hover{transform:translateX(10px) translateY(-5px) rotate(.35deg)}
+.card:hover{transform:translateY(-10px) rotate(-.5deg) scale(1.015)}
+.tags span:hover{transform:translateY(-6px) scale(1.08) rotate(-3deg)}
+.hero-image:hover{transform:rotate(-1deg) translateY(-10px) scale(1.025)}
+@keyframes attentionBounce{0%,100%{transform:translateY(0) rotate(0)}35%{transform:translateY(-14px) rotate(-4deg)}65%{transform:translateY(-5px) rotate(3deg)}}
+.scribble{animation:attentionBounce 3.2s ease-in-out infinite}.s1{animation-delay:-.4s}.s2{animation-delay:-1.2s}.s3{animation-delay:-2s}.s4{animation-delay:-2.7s}
+@keyframes dotPulse{0%,100%{transform:scale(1);box-shadow:0 8px 18px #6d3bb72b}50%{transform:scale(1.12);box-shadow:0 0 0 10px #6d3bb71c,0 14px 28px #6d3bb72b}}
+.time .dot{animation:dotPulse 2.4s ease-in-out infinite}
+@keyframes stripeFlow{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+.stripe{background-size:200% 100%;animation:stripeFlow 3.5s linear infinite}
+@media(prefers-reduced-motion:reduce){.scroll-reveal,.scroll-reveal.is-visible{opacity:1;transform:none;filter:none;transition:none!important}.time .dot,.stripe,.scribble{animation:none!important}}
