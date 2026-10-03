@@ -1,183 +1,37 @@
-// Animación de contador para las estadísticas
-function animateCounter(element, target, duration) {
-    let start = 0;
-    const increment = target / (duration / 16);
-    
-    const timer = setInterval(() => {
-        start += increment;
-        if (start >= target) {
-            element.textContent = target + '+';
-            clearInterval(timer);
-        } else {
-            element.textContent = Math.floor(start) + '+';
-        }
-    }, 16);
-}
+const A=document.getElementById('app'),N=document.getElementById('nav');
+const X=[
+['guardianes','hospital','01','🎵','Guardianes de canciones y cariño','Socioafectiva','3–6 años'],
+['botiquin','hospital','02','🩹','El botiquín de mis emociones','Socioafectiva','3–6 años'],
+['leer','hospital','03','📚','Leer para sanar','Comunicativa','2–6 años'],
+['cuerpo-juega','hospital','04','🧸','Mi cuerpo también juega','Corporal','2–6 años'],
+['colores','hospital','05','🎨','Colores que acompañan','Estética','2–6 años'],
+['viento','hospital','06','🪁','Festival del viento','Exploración','3–6 años'],
+['nido','proteccion','01','🪺','El nido de los abrazos','Socioafectiva','2–5 años'],
+['maleta','proteccion','02','🧳','La maleta de los mundos: mi voz, tu voz, nuestra casa','Comunicativa','2–5 años'],
+['cuerpo-mio','proteccion','03','🫶','Mi cuerpo es mío: el semáforo del buen trato','Corporal','3–5 años']
+];
+const L={hospital:['Aula Hospitalaria','🏥','purple','Experiencias breves y flexibles que integran juego, arte, literatura y exploración, ajustadas al contexto de salud.'],proteccion:['Entornos de protección','🛡️','green','Propuestas centradas en vínculo, pertenencia, diversidad, autonomía, buen trato y participación.']};
+const q=s=>String(s).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
+const go=r=>location.hash=r;
+const route=()=>location.hash.slice(1)||'inicio';
+const shell=h=>{A.innerHTML='<div class="view">'+h+'</div>';window.scrollTo(0,0);N.querySelectorAll('[data-route]').forEach(b=>b.classList.toggle('active',b.dataset.route===route().split('/')[0]));N.classList.remove('open')};
+const buttons=(r,t)=>'<button class="btn primary" data-route="'+r+'">'+t+'</button>';
+function home(){shell('<section class="hero"><div><span class="eyebrow">Licenciada en Educación Infantil</span><h1>Aprender es <em>acompañar.</em></h1><p>Portafolio pedagógico de Ruth Eliana Villota Mejía: formación, experiencias y una mirada educativa basada en juego, arte, literatura, exploración, inclusión y empatía.</p><div class="actions">'+buttons('laboratorios','Explorar laboratorios →')+'<button class="btn secondary" data-route="sobre-mi">Conocer mi perfil</button></div><div class="tags"><span>Juego</span><span>Arte</span><span>Literatura</span><span>Exploración</span><span>Inclusión</span><span>Empatía</span></div></div><div class="hero-art"><div class="ring a"></div><div class="ring b"></div><div class="portrait"><div class="face">🌈</div><strong>Ruth Eliana</strong></div><span class="sticker s1">✏️</span><span class="sticker s2">📚</span><span class="sticker s3">🧩</span><span class="sticker s4">💛</span></div></section><section class="section"><div class="head"><span class="eyebrow">Mi manera de educar</span><h2>Pequeñas experiencias, grandes posibilidades.</h2><p>El niño ocupa un lugar activo: sus intereses, ritmos, formas de expresión y bienestar orientan la experiencia.</p></div><div class="grid-3">'+[['🎲','Juego'],['🎨','Arte'],['📖','Literatura'],['🔎','Exploración'],['🤝','Inclusión'],['💜','Empatía']].map(a=>'<article class="card"><div class="icon">'+a[0]+'</div><h3>'+a[1]+'</h3><p>Una vía para aprender, expresar, imaginar, participar y construir sentido.</p><div class="stripe"></div></article>').join('')+'</div></section>')}
 
-// Observer para detectar cuando las estadísticas son visibles
-const observerOptions = {
-    threshold: 0.5,
-    rootMargin: '0px'
-};
+function about(){shell('<section class="page"><div class="page-title"><span class="eyebrow">Sobre mí</span><h1>Una educadora que aprende con la infancia.</h1><p>Ruth Eliana Villota Mejía es Licenciada en Educación Infantil en formación. Su mirada articula juego, arte, literatura y exploración del medio con inclusión, empatía, participación y cuidado.</p></div><div class="split"><article class="note"><h3>Perfil pedagógico</h3><ul><li>Diseño de experiencias con propósito pedagógico.</li><li>Observación y documentación de procesos.</li><li>Adaptaciones según contexto y posibilidades.</li><li>Cuidado y participación como principios transversales.</li></ul></article><article class="note"><h3>Una idea que guía el trabajo</h3><p>Las experiencias son oportunidades para construir vínculos, expresar emociones, preguntar, crear y descubrir.</p><div class="evidence-visual">JUGAR · CREAR · EXPLORAR</div></article></div></section>')}
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const statNumbers = entry.target.querySelectorAll('.stat-number');
-            statNumbers.forEach(stat => {
-                const target = parseInt(stat.getAttribute('data-count'));
-                animateCounter(stat, target, 2000);
-            });
-            observer.unobserve(entry.target);
-        }
-    });
-}, observerOptions);
+function formation(){shell('<section class="page"><div class="page-title"><span class="eyebrow">Formación</span><h1>Un recorrido que sigue creciendo.</h1><p>Formación académica y técnica vinculada a la atención integral de la primera infancia.</p></div><div class="timeline">'+[['2005','Bachiller académico','Formación académica'],['2019','Técnico laboral en Atención Integral a la Primera Infancia','Formación técnica'],['2026','Licenciatura en Educación Infantil','Formación profesional · en curso']].map(x=>'<div class="time"><div class="dot">'+x[0]+'</div><article><small>'+x[2]+'</small><b>'+x[1]+'</b><p>Trayectoria formativa que aporta al acompañamiento pedagógico de la primera infancia.</p></article></div>').join('')+'</div></section>')}
 
-// Observar la sección de estadísticas
-const statsSection = document.querySelector('.stats');
-if (statsSection) {
-    observer.observe(statsSection);
-}
+function labs(){shell('<section class="page"><div class="page-title"><span class="eyebrow">Laboratorios pedagógicos</span><h1>Dos contextos. Una misma intención: acompañar.</h1><p>Selecciona un contexto y entra a sus experiencias dentro de esta misma página.</p></div><div class="lab-grid">'+Object.entries(L).map(([k,v])=>'<article class="lab '+v[2]+'" data-lab="'+k+'"><div><div class="big-icon">'+v[1]+'</div><span>Laboratorio</span><h2>'+v[0]+'</h2><p>'+v[3]+'</p></div><div class="arrow">↗</div></article>').join('')+'</div></section>')}
 
-// Efecto parallax suave en el hero
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const hero = document.querySelector('.hero');
-    if (hero) {
-        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-    }
-});
+function lab(k){const l=L[k],xs=X.filter(x=>x[1]===k);shell('<section class="page"><button class="back" data-route="laboratorios">← Volver a laboratorios</button><div class="page-title"><span class="eyebrow">'+l[1]+' '+l[0]+'</span><h1>Experiencias</h1><p>'+l[3]+'</p></div><div class="experience-grid">'+xs.map(x=>'<article class="experience" data-exp="'+x[0]+'"><div class="num">'+x[2]+'</div><div><h3>'+q(x[4])+'</h3><p>'+x[5]+' · '+x[6]+'</p></div></article>').join('')+'</div></section>')}
 
-// Animación de las letras del grid
-document.addEventListener('DOMContentLoaded', () => {
-    const letterBoxes = document.querySelectorAll('.letter-box');
-    
-    letterBoxes.forEach((box, index) => {
-        box.addEventListener('mouseenter', () => {
-            box.style.animationPlayState = 'paused';
-        });
-        
-        box.addEventListener('mouseleave', () => {
-            box.style.animationPlayState = 'running';
-        });
-    });
-});
+function detail(id,tab='resumen'){const x=X.find(a=>a[0]===id),l=L[x[1]];shell('<section class="detail-top"><button class="back" data-route="laboratorios/'+x[1]+'">← Volver</button><div class="page-title"><span class="eyebrow">'+l[1]+' '+l[0]+' · Experiencia '+x[2]+'</span><h1>'+q(x[4])+'</h1><div class="meta"><span>'+x[5]+'</span><span>'+x[6]+'</span></div></div></section><div class="tabs">'+['resumen','situacion','proposito','actividades','adaptaciones','evidencia','cuidado'].map(t=>'<button class="'+(tab===t?'active':'')+'" data-tab="'+t+'">'+t[0].toUpperCase()+t.slice(1)+'</button>').join('')+'</div><section class="detail"><div class="detail-panel active"><h2>'+({resumen:'Resumen',situacion:'Situación',proposito:'Propósito pedagógico',actividades:'Actividades y materiales',adaptaciones:'Adaptaciones',evidencia:'Evidencia',cuidado:'Cuidado y bioseguridad'}[tab]||'Resumen')+'</h2><p>Esta ficha presenta la experiencia pedagógica, su intención y los criterios para adaptar la participación al contexto.</p><div class="care">La propuesta se desarrolla respetando el ritmo, la participación, las condiciones del contexto y las orientaciones institucionales.</div></div></section>')}
 
-// Smooth scroll para navegación
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-});
+function approach(){shell('<section class="page"><div class="page-title"><span class="eyebrow">Enfoque pedagógico</span><h1>Una práctica sensible al contexto.</h1><p>Juego, arte, literatura y exploración se articulan con inclusión, empatía, participación y cuidado.</p></div><div class="grid-3">'+[['🧒','Niño protagonista'],['🌈','Inclusión'],['💬','Escucha'],['🫶','Vínculo'],['🔍','Observación'],['🛡️','Cuidado']].map(a=>'<article class="card"><div class="icon">'+a[0]+'</div><h3>'+a[1]+'</h3><p>Principio que orienta el diseño, desarrollo y observación de las experiencias.</p></article>').join('')+'</div></section>')}
+function contact(){shell('<section class="page"><div class="page-title"><span class="eyebrow">Contacto</span><h1>Conversemos sobre educación infantil.</h1><p>Este espacio queda preparado para publicar los datos profesionales que Ruth decida compartir.</p></div><div class="contact-grid"><article class="contact-card"><h3>Portafolio</h3><p>Licenciada en Educación Infantil en formación.</p><p>Primera infancia · experiencias pedagógicas · inclusión · acompañamiento.</p></article><article class="contact-card"><h3>Datos para publicar</h3><p>Correo profesional: <em>agregar aquí</em></p><p>Teléfono: <em>agregar aquí</em></p><p>Red profesional: <em>agregar aquí</em></p></article></div></section>')}
 
-// Efecto de hover en las tarjetas de servicios
-const serviceCards = document.querySelectorAll('.service-card');
-serviceCards.forEach(card => {
-    card.addEventListener('mouseenter', (e) => {
-        const icon = card.querySelector('.icon-box');
-        icon.style.transform = 'rotate(360deg) scale(1.1)';
-        icon.style.transition = 'transform 0.6s ease';
-    });
-    
-    card.addEventListener('mouseleave', (e) => {
-        const icon = card.querySelector('.icon-box');
-        icon.style.transform = 'rotate(0deg) scale(1)';
-    });
-});
-
-// Validación del formulario de contacto
-const contactForm = document.querySelector('.contact-form');
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        // Efecto de envío
-        const submitButton = contactForm.querySelector('.submit-button');
-        const originalText = submitButton.textContent;
-        submitButton.textContent = 'Enviando...';
-        submitButton.style.background = 'linear-gradient(90deg, #00ff00, #00ff00)';
-        
-        // Simular envío
-        setTimeout(() => {
-            submitButton.textContent = '✓ Mensaje Enviado';
-            setTimeout(() => {
-                submitButton.textContent = originalText;
-                submitButton.style.background = 'linear-gradient(90deg, var(--neon-cyan), var(--neon-pink))';
-                contactForm.reset();
-            }, 2000);
-        }, 1500);
-    });
-}
-
-// Efecto de partículas en el fondo (opcional)
-function createParticle() {
-    const particle = document.createElement('div');
-    particle.style.position = 'fixed';
-    particle.style.width = '2px';
-    particle.style.height = '2px';
-    particle.style.background = 'var(--neon-cyan)';
-    particle.style.borderRadius = '50%';
-    particle.style.pointerEvents = 'none';
-    particle.style.left = Math.random() * window.innerWidth + 'px';
-    particle.style.top = '-10px';
-    particle.style.zIndex = '1';
-    particle.style.opacity = '0.6';
-    
-    document.body.appendChild(particle);
-    
-    const animation = particle.animate([
-        { transform: 'translateY(0px)', opacity: 0.6 },
-        { transform: `translateY(${window.innerHeight}px)`, opacity: 0 }
-    ], {
-        duration: Math.random() * 3000 + 2000,
-        easing: 'linear'
-    });
-    
-    animation.onfinish = () => {
-        particle.remove();
-    };
-}
-
-// Crear partículas periódicamente
-setInterval(createParticle, 300);
-
-// Efecto de cursor personalizado
-const cursor = document.createElement('div');
-cursor.style.width = '20px';
-cursor.style.height = '20px';
-cursor.style.border = '2px solid var(--neon-cyan)';
-cursor.style.borderRadius = '50%';
-cursor.style.position = 'fixed';
-cursor.style.pointerEvents = 'none';
-cursor.style.zIndex = '9999';
-cursor.style.transition = 'transform 0.1s ease';
-cursor.style.display = 'none';
-
-document.body.appendChild(cursor);
-
-document.addEventListener('mousemove', (e) => {
-    cursor.style.display = 'block';
-    cursor.style.left = e.clientX - 10 + 'px';
-    cursor.style.top = e.clientY - 10 + 'px';
-});
-
-// Escalar cursor en elementos interactivos
-const interactiveElements = document.querySelectorAll('button, a, .service-card, .gallery-item');
-interactiveElements.forEach(element => {
-    element.addEventListener('mouseenter', () => {
-        cursor.style.transform = 'scale(1.5)';
-        cursor.style.background = 'rgba(0, 255, 245, 0.2)';
-    });
-    
-    element.addEventListener('mouseleave', () => {
-        cursor.style.transform = 'scale(1)';
-        cursor.style.background = 'transparent';
-    });
-});
+function render(){const r=route();if(r==='inicio')home();else if(r==='sobre-mi')about();else if(r==='formacion')formation();else if(r==='laboratorios')labs();else if(r==='enfoque')approach();else if(r==='contacto')contact();else if(r.startsWith('laboratorios/'))lab(r.split('/')[1]);else if(r.startsWith('experiencia/'))detail(r.split('/')[1],r.split('/')[2]||'resumen');else home()}
+document.addEventListener('click',e=>{const a=e.target.closest('[data-route]');if(a)go(a.dataset.route);const l=e.target.closest('[data-lab]');if(l)go('laboratorios/'+l.dataset.lab);const x=e.target.closest('[data-exp]');if(x)go('experiencia/'+x.dataset.exp);const t=e.target.closest('[data-tab]');if(t){const r=route().split('/');go(r.slice(0,2).join('/')+'/'+t.dataset.tab)}});
+document.getElementById('mobileMenu').onclick=()=>N.classList.toggle('open');
+addEventListener('hashchange',render);render();
