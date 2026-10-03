@@ -1,162 +1,42 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Futurista</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portafolio pedagógico interactivo de Ruth Eliana Villota Mejía, Licenciada en Educación Infantil.">
+  <meta name="theme-color" content="#64256c">
+  <title>Ruth Eliana Villota Mejía · Portafolio pedagógico</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Sección 1: Hero -->
-    <section class="hero" id="hero">
-        <div class="container">
-            <div class="grid-letters">
-                <div class="letter-box box-1" data-letter="F">F</div>
-                <div class="letter-box box-2" data-letter="U">U</div>
-                <div class="letter-box box-3" data-letter="T">T</div>
-                <div class="letter-box box-4" data-letter="U">U</div>
-                <div class="letter-box box-5" data-letter="R">R</div>
-                <div class="letter-box box-6" data-letter="O">O</div>
-            </div>
-            <h1 class="glitch" data-text="BIENVENIDO AL FUTURO">BIENVENkkkkkkIDO AL FUTURO</h1>
-            <p class="subtitle">Diseño innovador con estilo vanguardista</p>
-            <button class="cta-button">Explorar</button>
-        </div>
-    </section>
+  <div class="bg-orb orb-1"></div><div class="bg-orb orb-2"></div>
+  <header class="topbar">
+    <a class="brand" href="#inicio" aria-label="Inicio">
+      <span class="brand-logo"><i></i><i></i><i></i></span>
+      <span><b>Ruth Eliana</b><small>Portafolio pedagógico</small></span>
+    </a>
+    <button class="mobile-menu" id="mobileMenu" aria-expanded="false" aria-label="Abrir menú">☰</button>
+    <nav id="nav">
+      <button data-route="inicio" class="active">Inicio</button>
+      <button data-route="sobre-mi">Sobre mí</button>
+      <button data-route="formacion">Formación</button>
+      <button data-route="laboratorios">Laboratorios</button>
+      <button data-route="enfoque">Enfoque</button>
+      <button data-route="contacto">Contacto</button>
+    </nav>
+  </header>
 
-    <!-- Sección 2: Servicios -->
-    <section class="services" id="services">
-        <div class="container">
-            <h2 class="section-title">Nuestros Servicios</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="icon-box">
-                        <span class="icon">⚡</span>
-                    </div>
-                    <h3>Velocidad</h3>
-                    <p>Rendimiento ultrarrápido para una experiencia fluida</p>
-                </div>
-                <div class="service-card">
-                    <div class="icon-box">
-                        <span class="icon">🎨</span>
-                    </div>
-                    <h3>Diseño</h3>
-                    <p>Interfaces modernas y atractivas que impactan</p>
-                </div>
-                <div class="service-card">
-                    <div class="icon-box">
-                        <span class="icon">🚀</span>
-                    </div>
-                    <h3>Innovación</h3>
-                    <p>Tecnología de vanguardia al alcance de tu mano</p>
-                </div>
-                <div class="service-card">
-                    <div class="icon-box">
-                        <span class="icon">🔒</span>
-                    </div>
-                    <h3>Seguridad</h3>
-                    <p>Protección avanzada para tus datos</p>
-                </div>
-            </div>
-        </div>
-    </section>
+  <main id="app"></main>
 
-    <!-- Sección 3: Galería -->
-    <section class="gallery" id="gallery">
-        <div class="container">
-            <h2 class="section-title">Galería Visual</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item item-1">
-                    <div class="overlay">
-                        <span class="letter">A</span>
-                    </div>
-                </div>
-                <div class="gallery-item item-2">
-                    <div class="overlay">
-                        <span class="letter">B</span>
-                    </div>
-                </div>
-                <div class="gallery-item item-3">
-                    <div class="overlay">
-                        <span class="letter">C</span>
-                    </div>
-                </div>
-                <div class="gallery-item item-4">
-                    <div class="overlay">
-                        <span class="letter">D</span>
-                    </div>
-                </div>
-                <div class="gallery-item item-5">
-                    <div class="overlay">
-                        <span class="letter">E</span>
-                    </div>
-                </div>
-                <div class="gallery-item item-6">
-                    <div class="overlay">
-                        <span class="letter">F</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <footer class="footer">
+    <div><strong>Ruth Eliana Villota Mejía</strong><span>Licenciada en Educación Infantil · Portafolio pedagógico</span></div>
+    <button data-route="inicio">Volver arriba ↑</button>
+  </footer>
 
-    <!-- Sección 4: Estadísticas -->
-    <section class="stats" id="stats">
-        <div class="container">
-            <h2 class="section-title">Números que Impresionan</h2>
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number" data-count="500">0</div>
-                    <p class="stat-label">Proyectos Completados</p>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number" data-count="1000">0</div>
-                    <p class="stat-label">Clientes Satisfechos</p>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number" data-count="50">0</div>
-                    <p class="stat-label">Premios Ganados</p>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number" data-count="24">0</div>
-                    <p class="stat-label">Soporte 24/7</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sección 5: Contacto -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <h2 class="section-title">Contáctanos</h2>
-            <form class="contact-form">
-                <div class="form-group">
-                    <input type="text" placeholder="Nombre" required>
-                </div>
-                <div class="form-group">
-                    <input type="email" placeholder="Email" required>
-                </div>
-                <div class="form-group">
-                    <textarea placeholder="Mensaje" rows="5" required></textarea>
-                </div>
-                <button type="submit" class="submit-button">Enviar Mensaje</button>
-            </form>
-            <div class="social-links">
-                <a href="#" class="social-icon">📱</a>
-                <a href="#" class="social-icon">💼</a>
-                <a href="#" class="social-icon">🌐</a>
-                <a href="#" class="social-icon">📧</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 Futuro Digital. Todos los derechos reservados.</p>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+  <div id="toast" class="toast" aria-live="polite"></div>
+  <script src="script.js"></script>
 </body>
 </html>
